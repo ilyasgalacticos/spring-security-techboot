@@ -22,15 +22,19 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    private UserService userService;
+    @Bean
+    public UserService userService(){
+        return new UserService();
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
+        http.exceptionHandling().accessDeniedPage("/403-page");
+
         AuthenticationManagerBuilder builder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
-        builder.userDetailsService(userService).passwordEncoder(passwordEncoder());
+        builder.userDetailsService(userService()).passwordEncoder(passwordEncoder());
 
         http.formLogin()
                 .loginPage("/sign-in-page")  // "/sign-in-page" Controller page
