@@ -48,6 +48,8 @@ public class SecurityConfig {
                 .logoutUrl("/sign-out") // post request to /sign-out
                 .logoutSuccessUrl("/sign-in-page");
 
+        http.csrf().disable();
+
         return http.build();
     }
 
