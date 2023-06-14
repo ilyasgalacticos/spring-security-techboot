@@ -1,5 +1,6 @@
 package kz.bitlab.techboot.springsecurityboot.api;
 
+import kz.bitlab.techboot.springsecurityboot.dto.CourseDTO;
 import kz.bitlab.techboot.springsecurityboot.model.Course;
 import kz.bitlab.techboot.springsecurityboot.service.CourseService;
 import lombok.RequiredArgsConstructor;
@@ -15,12 +16,12 @@ public class CourseController {
     private final CourseService courseService;
 
     @GetMapping(value = "/get-course-list")
-    public List<Course> getCourses(){
+    public List<CourseDTO> getCourses(){
         return courseService.getCourses();
     }
 
     @PostMapping(value = "/add-course")
-    public Course addCourse(@RequestBody Course course){
+    public CourseDTO addCourse(@RequestBody CourseDTO course){
         return courseService.addCourse(course);
     }
 

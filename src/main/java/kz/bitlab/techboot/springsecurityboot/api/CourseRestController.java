@@ -1,6 +1,7 @@
 package kz.bitlab.techboot.springsecurityboot.api;
 
 
+import kz.bitlab.techboot.springsecurityboot.dto.CourseDTO;
 import kz.bitlab.techboot.springsecurityboot.model.Course;
 import kz.bitlab.techboot.springsecurityboot.service.CourseService;
 import lombok.RequiredArgsConstructor;
@@ -16,22 +17,22 @@ public class CourseRestController {
     private final CourseService courseService;
 
     @GetMapping
-    public List<Course> courseList(){
+    public List<CourseDTO> courseList(){
         return courseService.getCourses();
     }
 
     @GetMapping(value = "{id}")
-    public Course getCourse(@PathVariable(name = "id") Long id){
+    public CourseDTO getCourse(@PathVariable(name = "id") Long id){
         return courseService.getCourse(id);
     }
 
     @PostMapping
-    public Course addCourse(@RequestBody Course course){
+    public CourseDTO addCourse(@RequestBody CourseDTO course){
         return courseService.addCourse(course);
     }
 
     @PutMapping
-    public Course updateCourse(@RequestBody Course course){
+    public CourseDTO updateCourse(@RequestBody CourseDTO course){
         return courseService.updateCourse(course);
     }
 
