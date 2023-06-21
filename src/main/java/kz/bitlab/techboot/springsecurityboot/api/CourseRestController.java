@@ -2,7 +2,6 @@ package kz.bitlab.techboot.springsecurityboot.api;
 
 
 import kz.bitlab.techboot.springsecurityboot.dto.CourseDTO;
-import kz.bitlab.techboot.springsecurityboot.model.Course;
 import kz.bitlab.techboot.springsecurityboot.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
