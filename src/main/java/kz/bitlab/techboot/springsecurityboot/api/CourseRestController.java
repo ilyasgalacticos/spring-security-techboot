@@ -4,6 +4,7 @@ package kz.bitlab.techboot.springsecurityboot.api;
 import kz.bitlab.techboot.springsecurityboot.dto.CourseDTO;
 import kz.bitlab.techboot.springsecurityboot.service.CourseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,16 +27,19 @@ public class CourseRestController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public CourseDTO addCourse(@RequestBody CourseDTO course){
         return courseService.addCourse(course);
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public CourseDTO updateCourse(@RequestBody CourseDTO course){
         return courseService.updateCourse(course);
     }
 
     @DeleteMapping(value = "{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public void deleteCourse(@PathVariable(name = "id") Long id){
         courseService.deleteCourse(id);
     }
